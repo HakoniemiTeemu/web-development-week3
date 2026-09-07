@@ -32,6 +32,10 @@ h1 {
     text-align: center;
 }
 
+tbody tr {
+    background-color: #ffffff;
+}
+
 tbody tr:nth-child(even) {
     background-color: #f2f2f2;
 }

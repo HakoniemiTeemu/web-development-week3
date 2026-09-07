@@ -53,9 +53,15 @@ const setupTable = (populationData, employmentData) => {
         employmentCell.textContent = employments[index];
 
         const employmentPercentage = ((employments[index] / populations[index]) * 100).toFixed(2);
-
+        
         const employmentPercentageCell = document.createElement("td");
         employmentPercentageCell.textContent = employmentPercentage + "%";
+
+        if (employmentPercentage > 45) {
+            row.style.backgroundColor = "#abffbd";
+        } else if (employmentPercentage < 25) {
+            row.style.backgroundColor = "#ff9e9e";
+        }
 
         row.appendChild(municipalityCell);
         row.appendChild(populationCell);
