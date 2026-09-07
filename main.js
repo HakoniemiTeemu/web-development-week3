@@ -2,7 +2,7 @@ const populationURL =
     "https://pxdata.stat.fi/PxWeb/api/v1/fi/StatFin/vaerak/11ra.px";
 
 const employmentURL =
-    "https://pxdata.stat.fi/PxWeb/api/v1/fi/StatFin/tyokay/115b.px"
+    "https://pxdata.stat.fi/PxWeb/api/v1/fi/StatFin/tyokay/115b.px";
 
 const fetchStatFinData = async (URL, body) => {
     const response = await fetch(URL, {
@@ -52,9 +52,15 @@ const setupTable = (populationData, employmentData) => {
         const employmentCell = document.createElement("td");
         employmentCell.textContent = employments[index];
 
+        const employmentPercentage = ((employments[index] / populations[index]) * 100).toFixed(2);
+
+        const employmentPercentageCell = document.createElement("td");
+        employmentPercentageCell.textContent = employmentPercentage + "%";
+
         row.appendChild(municipalityCell);
         row.appendChild(populationCell);
-        row.appendChild(employmentCell)
+        row.appendChild(employmentCell);
+        row.appendChild(employmentPercentageCell);
 
         tableBody.appendChild(row);
     });
